@@ -1,0 +1,6 @@
+server{
+    listen <%= @port%>;
+    location <%= @root %> {
+        proxy_pass <%= @proxy %>;
+    }
+}
