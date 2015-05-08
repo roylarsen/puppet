@@ -1,3 +1,4 @@
+#Set up static content site
 define nginx::static($site,$port,$root="/"){
     file{"${site}":
         path => "/etc/nginx/conf.d/${site}.conf",
