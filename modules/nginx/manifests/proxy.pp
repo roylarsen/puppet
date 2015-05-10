@@ -1,6 +1,7 @@
 #Sets up a basic proxy site
 define nginx::proxy($proxy,$site,$port,$root="/"){
     file{"${site}":
+        require => Package['nginx'],
         path => "/etc/nginx/conf.d/${site}.conf",
         owner => 'root',
         group => 'root',

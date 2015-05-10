@@ -1,6 +1,7 @@
 #Set up static content site
 define nginx::static($site,$port,$root="/"){
     file{"${site}":
+        require => Package["nginx"],
         path => "/etc/nginx/conf.d/${site}.conf",
         owner => 'root',
         group => 'root',
