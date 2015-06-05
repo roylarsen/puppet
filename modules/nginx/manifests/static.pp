@@ -11,8 +11,8 @@ define nginx::static($site,$port,$root="/"){
     }
     file{"/var/www/${site}/":
         ensure => directory,
-        owner => 'root',
-        group => 'root',
+        owner => 'nginx',
+        group => 'nginx',
         mode => '0755'
     }
 }

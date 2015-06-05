@@ -1,5 +1,3 @@
-#TODO: Support for OSes that don't use YUM
-
 class nginx{
     #Sets up YUM repo since CentOS doesn't package it (yet)
     case $operatingsystem{
@@ -22,6 +20,21 @@ class nginx{
                 ensure => "installed",
             }
         }
+        'Debian':{
+           package{"nginx":
+               ensure => "installed",
+           }
+        }
+    }
+    group{"nginx group":
+        ensure => "present",
+        name => "nginx",
+        before => User["nginx user"],
+    }
+    user{"nginx user":
+        ensure => "present",
+        name => "nginx",
+        groups => "nginx",
     }
     file{"/etc/nginx/nginx.conf":
         ensure => "present",
