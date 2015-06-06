@@ -11,6 +11,6 @@ node 'nginx.xhousebreakx.org'{
     nginx::proxy{'test-proxy':
         site => "test-proxy",
         port => "80",
-        proxy => "http://www.google.com",
+        proxy => "http://localhost:8080/test/",
     }
 }
