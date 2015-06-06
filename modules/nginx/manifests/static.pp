@@ -15,4 +15,13 @@ define nginx::static($site,$port,$root="/"){
         group => 'nginx',
         mode => '0755'
     }
+    file{"/var/www/${site}/index.html":
+        ensure => present,
+        require => File["${site}"],
+        path => "/var/www/${site}/index.html",
+        source => "/etc/puppet/modules/nginx/files/index.html",
+        owner => "nginx",
+        group => "nginx",
+        mode => "0755"
+    }
 }
